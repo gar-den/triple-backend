@@ -1,8 +1,8 @@
-import { DataTypes } from "sequelize";
+import { DataTypes } from 'sequelize';
 
-import { newSequelize } from "./index";
+import { newSequelize } from './index';
 
-export function PointLog() {
+function PointLog() {
   const PointLog = newSequelize.define(
     'pointLog',
     {
@@ -10,7 +10,7 @@ export function PointLog() {
         type: DataTypes.UUID,
         defaultValue: DataTypes.UUIDV4,
         allowNull: false,
-        primaryKey: true
+        primaryKey: true,
       },
       placeId: {
         type: DataTypes.STRING,
@@ -25,16 +25,17 @@ export function PointLog() {
       point: {
         type: DataTypes.INTEGER,
         allowNull: false,
-        unique: false
+        unique: false,
       },
       description: {
         type: DataTypes.STRING,
         allowNull: false,
-        unique: false
-      }
-    }
+        unique: false,
+      },
+    },
   );
 
-  return PointLog
+  return PointLog;
 }
 
+export default PointLog;

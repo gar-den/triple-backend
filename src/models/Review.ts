@@ -1,8 +1,8 @@
-import { DataTypes } from "sequelize";
+import { DataTypes } from 'sequelize';
 
-import { newSequelize } from "./index";
+import { newSequelize } from './index';
 
-export function Review() {
+function Review() {
   const Review = newSequelize.define(
     'review',
     {
@@ -10,7 +10,7 @@ export function Review() {
         type: DataTypes.UUID,
         defaultValue: DataTypes.UUIDV4,
         allowNull: false,
-        primaryKey: true
+        primaryKey: true,
       },
       content: {
         type: DataTypes.STRING,
@@ -30,10 +30,12 @@ export function Review() {
       point: {
         type: DataTypes.INTEGER,
         allowNull: false,
-        unique: false
-      }
-    }
+        unique: false,
+      },
+    },
   );
 
-  return Review
+  return Review;
 }
+
+export default Review;

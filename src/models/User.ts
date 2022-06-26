@@ -1,9 +1,8 @@
+import { DataTypes } from 'sequelize';
 
-import { DataTypes } from "sequelize";
+import { newSequelize } from './index';
 
-import { newSequelize } from "./index";
-
-export function User() {
+function User() {
   const User = newSequelize.define(
     'user',
     {
@@ -11,15 +10,17 @@ export function User() {
         type: DataTypes.UUID,
         defaultValue: DataTypes.UUIDV4,
         allowNull: false,
-        primaryKey: true
+        primaryKey: true,
       },
       name: {
         type: DataTypes.STRING,
         allowNull: false,
-        unique: true
-      }
-    }
+        unique: true,
+      },
+    },
   );
 
   return User;
 }
+
+export default User;
