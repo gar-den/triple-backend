@@ -1,11 +1,11 @@
-import { Op, Sequelize } from "sequelize";
+import { Sequelize } from 'sequelize';
 
-import config from "./config";
-import { Place } from "./Place";
-import { Review } from "./Review";
-import { User } from "./User";
-import { AttachedPhoto } from "./AttachedPhoto";
-import { PointLog } from "./PointLog";
+import config from './config';
+import Place from './Place';
+import Review from './Review';
+import User from './User';
+import AttachedPhoto from './AttachedPhoto';
+import PointLog from './PointLog';
 
 export const newSequelize = new Sequelize(
   config.db,
@@ -27,7 +27,7 @@ export const newSequelize = new Sequelize(
       max: config.pool.max,
       min: config.pool.min,
       acquire: config.pool.acquire,
-      idle: config.pool.idle
+      idle: config.pool.idle,
     },
   },
 );

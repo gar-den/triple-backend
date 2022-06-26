@@ -1,8 +1,8 @@
-import { DataTypes } from "sequelize";
+import { DataTypes } from 'sequelize';
 
-import { newSequelize } from ".";
+import { newSequelize } from './index';
 
-export function AttachedPhoto() {
+function AttachedPhoto() {
   const AttachedPhoto = newSequelize.define(
     'attachedPhoto',
     {
@@ -10,16 +10,17 @@ export function AttachedPhoto() {
         type: DataTypes.UUID,
         defaultValue: DataTypes.UUIDV4,
         allowNull: false,
-        primaryKey: true
+        primaryKey: true,
       },
       fileName: {
         type: DataTypes.STRING,
         allowNull: true,
         unique: false,
       },
-    }
+    },
   );
 
   return AttachedPhoto;
 }
 
+export default AttachedPhoto;

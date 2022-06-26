@@ -1,11 +1,11 @@
 export enum EventType {
-  REVIEW = "REVIEW"
+  REVIEW = 'REVIEW'
 }
 
 export enum EventAction {
-  ADD = "ADD",
-  MOD = "MOD",
-  DELETE = "DELETE"
+  ADD = 'ADD',
+  MOD = 'MOD',
+  DELETE = 'DELETE'
 }
 
 export interface ICreateEventInput {

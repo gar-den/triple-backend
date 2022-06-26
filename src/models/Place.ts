@@ -1,8 +1,8 @@
-import { DataTypes } from "sequelize";
+import { DataTypes } from 'sequelize';
 
-import { newSequelize } from "./index";
+import { newSequelize } from './index';
 
-export function Place() {
+function Place() {
   const Place = newSequelize.define(
     'place',
     {
@@ -10,15 +10,17 @@ export function Place() {
         type: DataTypes.UUID,
         defaultValue: DataTypes.UUIDV4,
         allowNull: false,
-        primaryKey: true
+        primaryKey: true,
       },
       name: {
         type: DataTypes.STRING,
         allowNull: true,
         unique: false,
       },
-    }
+    },
   );
 
   return Place;
 }
+
+export default Place;
