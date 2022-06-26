@@ -1,13 +1,12 @@
-
 import { DataTypes } from "sequelize";
 
 import { newSequelize } from "./index";
 
-export function User() {
-  const User = newSequelize.define(
-    'user',
+export function Place() {
+  const Place = newSequelize.define(
+    'place',
     {
-      userId: {
+      placeId: {
         type: DataTypes.UUID,
         defaultValue: DataTypes.UUIDV4,
         allowNull: false,
@@ -15,11 +14,11 @@ export function User() {
       },
       name: {
         type: DataTypes.STRING,
-        allowNull: false,
-        unique: true
-      }
+        allowNull: true,
+        unique: false,
+      },
     }
   );
 
-  return User;
+  return Place;
 }
