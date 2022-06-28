@@ -87,7 +87,7 @@ async function reviewEvent(data: ICreateEventInput) {
     userId,
     placeId,
     description,
-    point,
+    point: newPoint,
   });
 
   if (!!pointLog.errorMessage) {
