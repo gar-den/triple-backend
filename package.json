@@ -10,7 +10,9 @@
     "build": "echo 'build server...' && rimraf ./lib && tsc -b .",
     "server": "rimraf ./lib && tsc && cross-env ENV=local node lib/server.js",
     "lint": "eslint --ignore-path .eslintignore --ext .ts .",
-    "db:create": "mysql -uroot -ptest -h 127.0.0.1 -e 'CREATE DATABASE IF NOT EXISTS triple DEFAULT CHARACTER SET utf8mb4;'"
+    "db:create": "mysql -uroot -ptest -h 127.0.0.1 -e 'CREATE DATABASE IF NOT EXISTS triple DEFAULT CHARACTER SET utf8mb4;'",
+    "db:gen": "ENV=test jest --runInBand --forceExit --no-cache test/scenario.test.ts -u",
+    "test": "ENV=test jest --runInBand --forceExit --no-cache test/event.test.ts -u"
   },
   "jest": {
     "testEnvironment": "node",
@@ -36,6 +38,7 @@
     "cors": "^2.8.5",
     "dotenv": "^16.0.1",
     "express": "^4.18.1",
+    "iconv-lite": "^0.6.3",
     "jest": "^28.1.1",
     "mysql": "^2.18.1",
     "mysql2": "^2.3.3",

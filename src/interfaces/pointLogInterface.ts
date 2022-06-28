@@ -1,4 +1,4 @@
-export interface ICreatePoingLogInput {
+export interface ICreatePointLogInput {
   userId: string,
   placeId: string,
   point: number,

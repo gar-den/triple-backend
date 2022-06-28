@@ -16,6 +16,7 @@ module.exports = {
     'no-extra-boolean-cast': 'off',
     'no-plusplus': 'off',
     'no-await-in-loop': 'off',
+    'no-promise-executor-return': 'off',
   },
   // project: './tsconfig.json',
   // tsconfigRootDir: __dirname,
