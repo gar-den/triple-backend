@@ -26,6 +26,8 @@ const initServer = (async () => {
   });
 });
 
-initServer();
+if (process.env.ENV !== 'test') {
+  initServer();
+}
 
 export default { initServer, app };

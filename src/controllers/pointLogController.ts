@@ -1,7 +1,7 @@
-import { ICreatePoingLogInput } from '../interfaces/pointLogInterface';
+import { ICreatePointLogInput } from '../interfaces/pointLogInterface';
 import { Place, PointLog, User } from '../models';
 
-const createPoingLog = async (data: ICreatePoingLogInput) => {
+const createPoingLog = async (data: ICreatePointLogInput) => {
   const {
     userId, placeId, point, description,
   } = data;
@@ -29,8 +29,6 @@ const createPoingLog = async (data: ICreatePoingLogInput) => {
   const pointLog = await PointLog.build({
     userId, placeId, point, description,
   }).save();
-
-  console.log('pointLog:', pointLog);
 
   return { pointLog };
 };

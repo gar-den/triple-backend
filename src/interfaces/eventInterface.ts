@@ -14,10 +14,6 @@ export enum PointSortType {
   POINT_ASC = 'POINT_ASC',
 }
 
-export interface testInput {
-  content: string,
-}
-
 export interface ICreateEventInput {
   type: EventType,
   action: EventAction,

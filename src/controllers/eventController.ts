@@ -1,13 +1,10 @@
 import { Request, Response } from 'express';
 
-import { Model } from 'sequelize/types';
 import {
-  EventAction, EventType, ICreateEventInput, PointSortType, testInput,
+  EventAction, EventType, ICreateEventInput, PointSortType,
 } from '../interfaces/eventInterface';
 import PointLogController from './pointLogController';
-import {
-  AttachedPhoto, Place, Review, ReviewHasAttachedPhoto, User,
-} from '../models';
+import { Review, User } from '../models';
 
 /*
 해당 API는 review 자체를 생성, 수정, 삭제하지 않고,
@@ -55,13 +52,13 @@ async function reviewEvent(data: ICreateEventInput) {
     }
 
     // 특정 장소에 첫 리뷰 작성: 1점
-    const firstReviewOfPlace = await Review.findOne({
+    const reviewOfPlace = await Review.findAll({
       where: {
         placeId,
       },
     });
 
-    if (!!firstReviewOfPlace) {
+    if (reviewOfPlace.length === 1 && reviewOfPlace[0].getDataValue('reviewId') === reviewId) {
       point += 1;
     }
 
@@ -164,70 +161,8 @@ const createEvent = async (req: Request<{}, {}, ICreateEventInput>, res: Respons
   return res.json({ message: 'done' });
 };
 
-const scenario = async (req: Request<{}, {}, testInput>, res: Response) => {
-  // 2 users
-  const users: Model<any, any>[] = [];
-
-  const user1 = await User.build({
-    name: '김트리플',
-  }).save();
-
-  users.push(user1);
-
-  const user2 = await User.build({
-    name: '박트리플',
-  }).save();
-
-  users.push(user2);
-
-  // 5 photos
-  const attachedPhotoIds: Model<any, any>[] = [];
-
-  for (let i = 0; i < 5; i++) {
-    const attachedPhotoId = await AttachedPhoto.build({
-      fileName: `fileName${i}`,
-    }).save();
-
-    attachedPhotoIds.push(attachedPhotoId);
-  }
-
-  // 2 places
-  const places: Model<any, any>[] = [];
-
-  const place1 = await Place.build({
-    name: '남한산성',
-  }).save();
-
-  places.push(place1);
-
-  const place2 = await Place.build({
-    name: '강릉해수욕장',
-  }).save();
-
-  places.push(place2);
-
-  const review = await Review.build({
-    content: '최고에요',
-    userId: users[0].getDataValue('userId'),
-    placeId: places[0].getDataValue('placeId'),
-  }).save();
-
-  await ReviewHasAttachedPhoto.build({
-    reviewId: review.getDataValue('reviewId'),
-    attachedPhotoId: attachedPhotoIds[0].getDataValue('attachedPhotoId'),
-  }).save();
-
-  await ReviewHasAttachedPhoto.build({
-    reviewId: review.getDataValue('reviewId'),
-    attachedPhotoId: attachedPhotoIds[1].getDataValue('attachedPhotoId'),
-  }).save();
-
-  res.json({ review });
-};
-
 export default {
   createEvent,
   getPointByUser,
   getAllPoints,
-  scenario,
 };
