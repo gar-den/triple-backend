@@ -1,28 +1,14 @@
-import { Sequelize } from 'sequelize';
+import { DataTypes, Sequelize } from 'sequelize';
 
 import config from './config';
-import Place from './Place';
-import Review from './Review';
-import User from './User';
-import AttachedPhoto from './AttachedPhoto';
-import PointLog from './PointLog';
 
-export const newSequelize = new Sequelize(
+export const sequelize = new Sequelize(
   config.db,
   config.username,
   config.password,
   {
     host: config.host,
     dialect: 'mysql',
-    // operatorsAliases: {
-    //   $and: Op.and,
-    //   $or: Op.or,
-    //   $eq: Op.eq,
-    //   $gt: Op.gt,
-    //   $lt: Op.lt,
-    //   $lte: Op.lte,
-    //   $like: Op.like
-    // },
     pool: {
       max: config.pool.max,
       min: config.pool.min,
@@ -32,24 +18,162 @@ export const newSequelize = new Sequelize(
   },
 );
 
-const user = User();
-const place = Place();
-const review = Review();
-const attachedPhoto = AttachedPhoto();
-const pointLog = PointLog();
+export const AttachedPhoto = sequelize.define(
+  'attachedPhoto',
+  {
+    attachedPhotoId: {
+      type: DataTypes.UUID,
+      defaultValue: DataTypes.UUIDV4,
+      allowNull: false,
+      primaryKey: true,
+    },
+    fileName: {
+      type: DataTypes.STRING,
+      allowNull: true,
+      unique: false,
+    },
+  },
+);
 
-review.hasOne(user);
-review.hasOne(place);
-review.hasMany(attachedPhoto);
+export const User = sequelize.define(
+  'user',
+  {
+    userId: {
+      type: DataTypes.UUID,
+      defaultValue: DataTypes.UUIDV4,
+      allowNull: false,
+      primaryKey: true,
+    },
+    name: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      unique: true,
+    },
+    point: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      defaultValue: 0,
+      unique: false,
+    },
+  },
+);
 
-pointLog.hasOne(user);
-pointLog.hasOne(place);
+export const Place = sequelize.define(
+  'place',
+  {
+    placeId: {
+      type: DataTypes.UUID,
+      defaultValue: DataTypes.UUIDV4,
+      allowNull: false,
+      primaryKey: true,
+    },
+    name: {
+      type: DataTypes.STRING,
+      allowNull: true,
+      unique: false,
+    },
+  },
+);
+
+export const Review = sequelize.define(
+  'review',
+  {
+    reviewId: {
+      type: DataTypes.UUID,
+      defaultValue: DataTypes.UUIDV4,
+      allowNull: false,
+      primaryKey: true,
+    },
+    content: {
+      type: DataTypes.STRING,
+      allowNull: true,
+      unique: false,
+    },
+    point: {
+      type: DataTypes.INTEGER,
+      allowNull: true,
+      unique: false,
+      defaultValue: 0,
+    },
+    userId: {
+      type: DataTypes.UUID,
+      references: {
+        model: User,
+        key: 'userId',
+      },
+    },
+    placeId: {
+      type: DataTypes.UUID,
+      references: {
+        model: Place,
+        key: 'placeId',
+      },
+    },
+  },
+);
+
+export const PointLog = sequelize.define(
+  'pointLog',
+  {
+    pointLogId: {
+      type: DataTypes.UUID,
+      defaultValue: DataTypes.UUIDV4,
+      allowNull: false,
+      primaryKey: true,
+    },
+    point: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      unique: false,
+    },
+    description: {
+      type: DataTypes.STRING(400),
+      allowNull: false,
+      unique: false,
+    },
+    userId: {
+      type: DataTypes.UUID,
+      references: {
+        model: User,
+        key: 'userId',
+      },
+    },
+    placeId: {
+      type: DataTypes.UUID,
+      references: {
+        model: Place,
+        key: 'placeId',
+      },
+    },
+  },
+);
+
+export const ReviewHasAttachedPhoto = sequelize.define(
+  'reviewHasAttachedPhoto',
+  {
+    reviewId: {
+      type: DataTypes.UUID,
+      references: {
+        model: Review,
+        key: 'reviewId',
+      },
+    },
+    attachedPhotoId: {
+      type: DataTypes.UUID,
+      references: {
+        model: AttachedPhoto,
+        key: 'attachedPhotoId',
+      },
+    },
+  },
+);
 
 export const db = {
-  newSequelize,
-  user,
-  place,
-  review,
-  attachedPhoto,
-  pointLog,
+  sequelize,
+  User,
+  Place,
+  Review,
+  AttachedPhoto,
+  PointLog,
+  ReviewHasAttachedPhoto,
 };
