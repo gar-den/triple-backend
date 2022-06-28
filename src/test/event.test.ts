@@ -146,6 +146,9 @@ describe('event', () => {
     expect(res3.statusCode).toBe(200);
     expect(res3.body.point).toBe(1);
 
+    /*
+    포인트가 많은 순으로 리스팅 되는지 테스트
+    */
     const res4 = await request(app).get('/events/point/list?page=1&pageSize=5&sort=POINT_DESC');
 
     expect(res4.statusCode).toBe(200);

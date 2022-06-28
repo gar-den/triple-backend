@@ -12,3 +12,9 @@ Triple tourist club mileage service
 > yarn db:gen
 > yarn server
 ```
+
+테스트 코드 실행 방법
+```
+> yarn db:create
+> yarn test
+```
