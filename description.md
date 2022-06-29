@@ -103,7 +103,16 @@ interface ICreateEventInput {
 <td>
 <pre>
 {
-    "point": 2
+  "pointLog": {
+    "pointLogId": "dff11e58-8f98-4e01-9f5a-7cd315058d44",
+    "userId": "68fa9dcf-c73b-4f9f-b2b4-6a332afc41e0",
+    "placeId": "44a3bda3-a2fb-4f63-b108-a787738e6285",
+    "point": 0,
+    "description": "{\"type\":\"REVIEW\",\"action\":\"MOD\",\"reviewId\":\"cc422f9f-a403-4f7f-ae4e-d474198ac62d\",\"content\":\"최고에요!\",\"attachedPhotoIds\":[],\"userId\":\"68fa9dcf-c73b-4f9f-b2b4-6a332afc41e0\",\"placeId\":\"44a3bda3-a2fb-4f63-b108-a787738e6285\"}",
+    "updatedAt": "2022-06-29T05:19:34.306Z",
+    "createdAt": "2022-06-29T05:19:34.306Z"
+  },
+  "point": 1
 }
 </pre>
 </td>

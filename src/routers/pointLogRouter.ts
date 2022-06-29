@@ -3,4 +3,4 @@ import PointLogController from '../controllers/pointLogController';
 
 const pointLogsRouter = Router();
 
-pointLogsRouter.post('/', PointLogController.createPoingLog);
+pointLogsRouter.post('/', PointLogController.createPointLog);
