@@ -57,6 +57,10 @@
 | point | 포인트 증감량 | number |
 | description | 포인트 증감 이력에 대한 상세 내용 | string (JSON형태 string)<br> ```{"type":"REVIEW","action":"MOD","reviewId":"3dff984e-54fb-4fb2-983a-11c72cb3e013","content":"","attachedPhotoIds":["e83506ed-9e79-4684-8f7d-d9784f7b37c3"],"userId":"9c44ce34-194f-42aa-a96a-cb934f00a4e0","placeId":"b00b6272-d6b7-43c0-9367-b7821695c349"}``` |
 
+<br>
+
+### ERD
+<img width="553" alt="ERD" src="https://user-images.githubusercontent.com/62330320/176360341-d7467799-b964-4b8b-89a9-5342ff1fea88.png">
 
 ## API description
 ### common enums

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<diagram version="1" name="triple">
+	<entities>
+		<data-source id="mysql8-17cde245466-7bcc14bd5dd1d777">
+			<entity id="1" name="attachedPhotos" fq-name="triple.attachedPhotos">
+				<path name="triple"/>
+			</entity>
+			<entity id="2" name="places" fq-name="triple.places">
+				<path name="triple"/>
+			</entity>
+			<entity id="3" name="pointLogs" fq-name="triple.pointLogs">
+				<path name="triple"/>
+			</entity>
+			<entity id="4" name="reviewHasAttachedPhotos" fq-name="triple.reviewHasAttachedPhotos">
+				<path name="triple"/>
+			</entity>
+			<entity id="5" name="reviews" fq-name="triple.reviews">
+				<path name="triple"/>
+			</entity>
+			<entity id="6" name="users" fq-name="triple.users">
+				<path name="triple"/>
+			</entity>
+		</data-source>
+	</entities>
+	<relations>
+		<relation name="reviewhasattachedphotos_ibfk_2" fq-name="triple.reviewHasAttachedPhotos.reviewhasattachedphotos_ibfk_2" type="fk" pk-ref="1" fk-ref="4"/>
+		<relation name="pointlogs_ibfk_2" fq-name="triple.pointLogs.pointlogs_ibfk_2" type="fk" pk-ref="2" fk-ref="3"/>
+		<relation name="reviews_ibfk_2" fq-name="triple.reviews.reviews_ibfk_2" type="fk" pk-ref="2" fk-ref="5"/>
+		<relation name="reviewhasattachedphotos_ibfk_1" fq-name="triple.reviewHasAttachedPhotos.reviewhasattachedphotos_ibfk_1" type="fk" pk-ref="5" fk-ref="4"/>
+		<relation name="pointlogs_ibfk_1" fq-name="triple.pointLogs.pointlogs_ibfk_1" type="fk" pk-ref="6" fk-ref="3"/>
+		<relation name="reviews_ibfk_1" fq-name="triple.reviews.reviews_ibfk_1" type="fk" pk-ref="6" fk-ref="5"/>
+	</relations>
+</diagram>
