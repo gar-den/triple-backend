@@ -83,7 +83,7 @@ async function reviewEvent(data: ICreateEventInput) {
 
   // eventLog 생성
   const description = JSON.stringify(data);
-  const pointLog = await PointLogController.createPoingLog({
+  const pointLog = await PointLogController.createPointLog({
     userId,
     placeId,
     description,
@@ -94,7 +94,7 @@ async function reviewEvent(data: ICreateEventInput) {
     return { errorMessage: pointLog.errorMessage };
   }
 
-  return { point };
+  return { pointLog: pointLog.pointLog, point };
 }
 
 const getPointByUser = async (req: Request, res: Response) => {

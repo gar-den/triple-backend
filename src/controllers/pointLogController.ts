@@ -1,7 +1,7 @@
 import { ICreatePointLogInput } from '../interfaces/pointLogInterface';
 import { Place, PointLog, User } from '../models';
 
-const createPoingLog = async (data: ICreatePointLogInput) => {
+const createPointLog = async (data: ICreatePointLogInput) => {
   const {
     userId, placeId, point, description,
   } = data;
@@ -34,5 +34,5 @@ const createPoingLog = async (data: ICreatePointLogInput) => {
 };
 
 export default {
-  createPoingLog,
+  createPointLog,
 };
