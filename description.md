@@ -110,7 +110,7 @@ interface ICreateEventInput {
 </tr>
 
 <tr>
-<td>GET /events/point/list?page=${page}&pageSize=${pageSize}&sort=${PointSortType}</td>
+<td>GET /events/point/list?page=1&amp;pageSize=10&amp;sort=POINT_DESC</td>
 <td>
 포인트 전체 조회<br>- pagination
 </td>
