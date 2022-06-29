@@ -2,7 +2,7 @@
 
 Triple tourist club mileage service
 
-[Table/API 명세서-notion ver](https://wirehaired-snapper-f57.notion.site/API-cf415bdf56ab4c20926e3bfcb9ccff9f)
+[Table/API 명세서](https://github.com/gar-den/triple-backend/blob/main/description.md)
 
 실행 방법
 ```
